@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-
 import sys
 
 
@@ -9,9 +7,10 @@ def safe_print_integer_err(value):
     try:
         print("{:d}".format(value))
         return True
-    except ValueError:
+    except TypeError:
+        type_str = str(type(value)).split("'")[1]
         error_msg = "Exception:Unknown format code 'd' for object of type '{}'"
-        error_msg = error_msg.format(type(value).__name__)
+        error_msg = error_msg.format(type_str)
         print(error_msg, file=sys.stderr)
         return False
 
