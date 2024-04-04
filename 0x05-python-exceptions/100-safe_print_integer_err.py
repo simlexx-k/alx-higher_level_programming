@@ -7,9 +7,9 @@ def safe_print_integer_err(value):
     try:
         print("{:d}".format(value))
         return True
-    except TypeError:
-        error_msg = "Exception: Unknown format code 'd' for obj of te '{}'"
-        error_msg = error_msg.format(str(type(value)).split("'")[1])
+    except (ValueError, TypeError):
+        error_msg = "Unknown format code 'd' for object of type '{}'"
+        error_msg = error_msg.format(value.__class__.__name__)
         print(error_msg, file=sys.stderr)
         return False
 
