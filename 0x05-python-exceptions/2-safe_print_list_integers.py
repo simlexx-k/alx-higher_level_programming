@@ -1,17 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 
 def safe_print_list_integers(my_list=[], x=0):
-    """Prints the first x elements of a list containing integers."""
+    """Prints the first x elements of a list containing only integers."""
     count = 0
     try:
         for i in range(x):
             if isinstance(my_list[i], int):
                 print("{:d}".format(my_list[i]), end="")
                 count += 1
-        print()
-        return count
     except IndexError:
+        pass
+    finally:
         print()
         return count
 
